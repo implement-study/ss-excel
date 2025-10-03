@@ -14,6 +14,7 @@ public class UploadConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+        // 注册自定义参数解析器
         resolvers.add(new UploadDataHandlerMethodArgumentResolver());
     }
 }
