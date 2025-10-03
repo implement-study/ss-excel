@@ -20,14 +20,22 @@ import java.util.UUID;
 @RequestMapping("/excel")
 public class ExcelController {
 
-    //  导出数据 下载excel
-
+    /**
+     * 提供用户数据Excel文件下载接口。
+     * 该接口通过{@link SSExcel}注解将返回的用户列表自动转换为Excel文件，
+     * 文件名格式为"用户数据"后接当前日期（如"用户数据20231015"）。
+     */
     @GetMapping("/download")
     @SSExcel(excelName = "用户数据$date")
     public List<User> download() {
         return data();
     }
 
+    /**
+     * 提供用户数据Excel文件上传接口
+     * UploadExcel注解标记该方法处理Excel上传
+     * ExcelData注解标记参数化接受解析后的数据
+     */
     @PostMapping("upload")
     @UploadExcel
     public String upload(@ExcelData List<User> objects) {

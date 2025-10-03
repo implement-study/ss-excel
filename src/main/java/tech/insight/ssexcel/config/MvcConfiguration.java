@@ -22,6 +22,7 @@ public class MvcConfiguration implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        // 注册自定义返回值处理器
         List<HandlerMethodReturnValueHandler> returnValueHandlers = adapter.getReturnValueHandlers();
         if (returnValueHandlers != null) {
             List<HandlerMethodReturnValueHandler> newList = new ArrayList<>(returnValueHandlers);
